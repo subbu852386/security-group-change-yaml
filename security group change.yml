@@ -1,0 +1,17 @@
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+  - ec2_group:
+      name: launch-wizard-3
+      vpc_id: vpc-057f8a1e2cdc9e485
+      region: us-east-2
+      description: launch-wizard-3
+      rules_egress:
+      - proto: '-1'
+        cidr_ip: 0.0.0.0/0
+      rules:
+      - to_port: 443
+        proto: tcp
+        from_port: 443
+        cidr_ip: 0.0.0.0/0
